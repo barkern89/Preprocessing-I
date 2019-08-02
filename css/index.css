@@ -71,7 +71,6 @@ embed,
 figure,
 figcaption,
 footer,
-header,
 hgroup,
 menu,
 nav,
@@ -97,7 +96,6 @@ details,
 figcaption,
 figure,
 footer,
-header,
 hgroup,
 menu,
 nav,
@@ -133,11 +131,14 @@ table {
 html,
 body {
   height: 100%;
+  font-family: 'Montserrat', sans-serif;
 }
 table {
-  font-family: arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 80%;
+  padding: 35px;
+  text-align: center;
 }
 td,
 th {
@@ -151,20 +152,70 @@ tr:nth-child(even) {
 img {
   height: 300px;
   width: 240px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 20px;
 }
-h1 {
+.container {
+  height: 100%
+	width: 800px;
+  margin-top: 0;
+  margin-right: 50px;
+  margin-bottom: 50 px;
+  margin-left: 50px;
+}
+.container .middle-content {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 35px;
+  height: 250px;
+}
+.container .middle-content .about-me {
+  width: 300px;
+  height: 400px;
+}
+.container .middle-content .things-i-enjoy {
+  width: 300px;
+  height: 400px;
+}
+.container .middle-content h2 {
+  font-size: 1.6rem;
+}
+.container .bottom-content {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+.container .top-content {
+  text-align: center;
+  background: lightgray;
+  border-radius: 5px;
+}
+.container .top-content button:hover {
+  color: whitesmoke;
+  background-color: black;
+}
+.container .top-content button {
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  margin: 35px;
+}
+.container .top-content h1 {
   font-size: 2rem;
+  padding: 20px;
 }
-header {
+.container header {
   width: 100%;
 }
-header nav {
+.container header nav {
   display: flex;
   justify-content: space-around;
   width: 100%;
   padding: 50px;
 }
-header nav a {
+.container header nav a {
   color: black;
   text-decoration: none;
   font-weight: bolder;
