@@ -1,0 +1,166 @@
+VARIABLES:
+Self-explanatory. You create a variable in LESS by using the @ symbol. 
+
+VARIABLE EXAMPLE 
+@linkColor: dodgerblue;
+
+a {
+  color: @linkColor;
+  font-size: 1.3rem;
+  text-decoration: none;
+   }
+
+
+In the above example, we're invoking the @linkColor variable on the the anchor tag. Once you set a variable in LESS, it can be used globally (anywhere in your code) as many times as you need that property.
+
+NESTING:
+Instead of using vanilla CSS specificity, in LESS we can nest selectors within one another. This provides a visualization and it's easy to quickly identify which elements are nested inside of one another. 
+
+NESTING EXAMPLE:
+
+.container {
+  width: 800px;
+  margin: 50px auto;
+  
+  header {
+    width: 100%;
+    
+    nav {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      
+      a {
+        color: @linkColor;
+        font-size: 1.3rem;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+VERSUS VANILLA CSS:
+
+.container header {
+  width: 100%;
+ }
+
+.container nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container header nav a {
+  color: @backgroundBlue;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+
+BUBBLING:
+With LESS, you can insert a @media query breakpoint directly under a nested selector and it will automatically apply the specified media query to the element(s) selected by that selector. This is known as bubbling.
+
+BUBBLING EXAMPLE:
+In the below example, I've inserted a @media query with a max-width breakpoint of 800px, and set the width of .container to 100% when viewport is <= 800px. This causes everything inside of .container to scale with viewport size. With bubbling, it's easy to see exactly what's happening at the breakpoint(s) and what it's affecting. You can add breakpoints anywhere you want within your nested LESS code!, and it will apply your media query to the selector above it.
+
+.container {
+  width: 800px;
+  margin: 50px auto;
+  
+  @media(max-width: 800px) {
+    width: 100%;
+  }
+  
+  header {
+    width: 100%;
+    
+    nav {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      
+      a {
+        color: @linkColor;
+        font-size: 1.3rem;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+MIXINS:
+Mixins are chunks of CSS that we can reuse anywhere we want throughout our page. We can define a mixin anywhere we want. We write mixins just like we would create a class or ID selector:
+
+.purpleText {
+   color: @backgroundPurple;
+   font-size: 2rem;
+  }
+
+Remember, we can plant this mixin anywhere we want within our CSS. To invoke the .purpleText mixin, we type
+
+.purpleText();
+
+under the selector that we want to apply that mixin to (looks like a JavaScript function, doesn't it? Remember, the LESS compiler runs on JavaScript!)
+
+MIXIN EXAMPLE:
+
+a {
+  .purpleText();
+  }
+
+This anchor tag will now have the .purpleText properties applied to it!
+
+If you have an existing class or ID, and want to use the parameters assigned to it on another selector, but DON'T WANT the class or id ITSELF to appear as a rule in the CSS, you can place parentheses after it: 
+
+.purpleText() {
+   color: @backgroundPurple;
+   font-size: 2rem;
+  }
+
+
+Mixins can also recieve parameters inside of their parentheses:
+
+.purpleText(@size: 25px) {
+   color: @backgroundPurple;
+   font-size: 2rem;
+  }
+
+
+In the example above, we're defining a variable inside of the .purpleText selector. This variable is NOT global; it can only be used inside of that selector.
+
+You can also pass new parameters as needed into the mixin each time you call it:
+
+.purpleText(100px)
+
+The variable @size will now be 100px instead of the default 25 that we specified when we created the mixer.
+
+
+
+OPERATORS:
+We can also use math operations in LESS! 
+
+
+OPERATOR EXAMPLE:
+
+section {
+   width: 100% - 10%;
+  {
+
+Now our selected section will have a width of 90%!
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
